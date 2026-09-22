@@ -1,3 +1,4 @@
+using TreeEditor;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -13,10 +14,10 @@ public class Spawner : MonoBehaviour
         {
             for (int j = 0; j < 100; j++)
             {
+                float perlinY = Mathf.PerlinNoise(i*0.05f, j*0.005f) * 3;
                 int rng = Random.Range(0, 10);
                 if (rng < 8)
                 {
-                    
 
                     if (i == 0 || j == 0 || i == 99 || j == 99)
                     {
@@ -31,7 +32,7 @@ public class Spawner : MonoBehaviour
                             }
                         }
                     }
-                    else Instantiate(sol, new Vector3(i, 0, j), Quaternion.identity);
+                    else Instantiate(sol, new Vector3(i, perlinY, j), Quaternion.identity);
 
                 }
 
